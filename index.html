@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#75d5ff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Eden telt mee!</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <div class="sky-decor" aria-hidden="true">
+        <span class="cloud cloud-one"></span>
+        <span class="cloud cloud-two"></span>
+        <span class="sun"></span>
+      </div>
+
+      <section id="welcomeScreen" class="screen welcome-screen is-active" aria-labelledby="welcomeTitle">
+        <button id="parentButton" class="round-icon parent-button" type="button" aria-label="Instellingen voor mama of papa">⚙</button>
+        <div class="welcome-copy">
+          <p class="eyebrow">Klaar voor een telavontuur?</p>
+          <h1 id="welcomeTitle">Eden telt mee!</h1>
+          <p class="welcome-subtitle">Tik · luister · tel</p>
+        </div>
+
+        <div class="welcome-friends" aria-hidden="true">
+          <img src="assets/smurfin.png" alt="" />
+          <img class="main-friend" src="assets/grote-smurf.png" alt="" />
+          <img src="assets/brilsmurf.png" alt="" />
+        </div>
+
+        <button id="startButton" class="primary-button start-button" type="button">
+          <span class="play-icon" aria-hidden="true">▶</span>
+          <span>Start!</span>
+        </button>
+        <p class="grown-up-hint">Makkelijk: samen tellen tot 5</p>
+      </section>
+
+      <section id="modeScreen" class="screen mode-screen" aria-labelledby="modeTitle">
+        <header class="mode-header">
+          <button id="modeBackButton" class="round-icon" type="button" aria-label="Terug naar het begin">←</button>
+          <div>
+            <p class="eyebrow">Kies een spelletje</p>
+            <h2 id="modeTitle">Wat gaan we doen?</h2>
+          </div>
+        </header>
+
+        <div class="mode-grid">
+          <button class="mode-card" type="button" data-mode="count">
+            <span class="mode-preview count-preview" aria-hidden="true">
+              <img src="assets/grote-smurf.png" alt="" />
+              <img src="assets/grote-smurf.png" alt="" />
+            </span>
+            <span class="mode-copy">
+              <strong>Tik & tel</strong>
+              <small>Tik elke Smurf aan</small>
+            </span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="search">
+            <span class="mode-preview search-preview" aria-hidden="true">
+              <img src="assets/grote-smurf.png" alt="" />
+              <img src="assets/smurfin.png" alt="" />
+              <span class="search-ring"></span>
+            </span>
+            <span class="mode-copy">
+              <strong>Zoek & tel</strong>
+              <small>Vind de gevraagde figuur</small>
+            </span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="gift">
+            <span class="mode-preview gift-preview" aria-hidden="true">
+              <span class="gift-preview-token">🎁</span>
+              <img src="assets/grote-smurf.png" alt="" />
+            </span>
+            <span class="mode-copy">
+              <strong>Cadeautjes</strong>
+              <small>Geef ieder figuurtje één</small>
+            </span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+
+        <p id="modeLevelHint" class="mode-level-hint">Makkelijk · tellen tot 5</p>
+      </section>
+
+      <main id="gameScreen" class="screen game-screen" aria-live="polite">
+        <header class="game-header">
+          <button id="homeButton" class="round-icon" type="button" aria-label="Kies een ander spel">←</button>
+          <div id="progressDots" class="progress-dots" aria-label="Voortgang"></div>
+          <button id="soundButton" class="round-icon" type="button" aria-label="Geluid uitzetten">🔊</button>
+        </header>
+
+        <section class="instruction-card">
+          <img id="instructionFigure" class="instruction-figure" src="assets/grote-smurf.png" alt="" hidden />
+          <p id="instruction" class="instruction">Tik op de figuren</p>
+          <button id="repeatButton" class="repeat-button" type="button" aria-label="Luister nog eens">
+            <span aria-hidden="true">🔊</span>
+          </button>
+        </section>
+
+        <section id="countStage" class="count-stage" aria-label="Telspel">
+          <div id="characterGrid" class="character-grid"></div>
+          <div id="liveNumber" class="live-number" aria-hidden="true"></div>
+        </section>
+      </main>
+
+      <section id="celebrationScreen" class="screen celebration-screen" aria-labelledby="celebrationTitle">
+        <div id="confetti" class="confetti" aria-hidden="true"></div>
+        <p class="celebration-kicker">Dat zijn er</p>
+        <div id="celebrationNumber" class="celebration-number">3</div>
+        <p id="celebrationWord" class="celebration-word">drie</p>
+        <div id="resultDots" class="result-dots" aria-hidden="true"></div>
+        <h2 id="celebrationTitle">Goed geteld!</h2>
+        <div id="celebrationFriends" class="celebration-friends" aria-hidden="true"></div>
+        <button id="nextButton" class="primary-button next-button" type="button">
+          <span>Nog eens</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <button id="otherGameButton" class="secondary-button" type="button">Ander spel</button>
+      </section>
+
+      <dialog id="parentDialog" class="parent-dialog">
+        <form method="dialog" class="settings-card">
+          <button class="close-button" value="cancel" aria-label="Instellingen sluiten">×</button>
+          <p class="eyebrow">Voor grote mensen</p>
+          <h2>Instellingen</h2>
+
+          <fieldset>
+            <legend>Kies het niveau</legend>
+            <div class="setting-options">
+              <label>
+                <input type="radio" name="maxCount" value="5" checked />
+                <span><strong>Makkelijk</strong><small>1 – 5</small></span>
+              </label>
+              <label>
+                <input type="radio" name="maxCount" value="10" />
+                <span><strong>Moeilijker</strong><small>1 – 10</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p class="settings-note">De app vraagt nooit om een cijfer te herkennen. Ze telt mee en toont daarna zelf de oplossing.</p>
+
+          <section class="install-settings" aria-labelledby="installTitle">
+            <h3 id="installTitle">Op de Samsung installeren</h3>
+            <button id="installButton" class="install-button" type="button">
+              <span aria-hidden="true">⬇</span>
+              <span>Installeer de app</span>
+            </button>
+            <p id="installStatus" class="install-status">Na publicatie open je deze pagina één keer in Chrome.</p>
+
+            <details class="pin-guide">
+              <summary>Peuterstand: app vastzetten</summary>
+              <ol>
+                <li>Zet bij Samsung <strong>Apps vastzetten</strong> aan onder <strong>Beveiliging en privacy → Meer beveiligingsinstellingen</strong>.</li>
+                <li>Open Eden telt en ga naar <strong>Recente apps</strong>.</li>
+                <li>Tik bovenaan op het app-icoon en kies <strong>Deze app vastzetten</strong>.</li>
+              </ol>
+              <p>Schakel ook ontgrendeling met pincode in. Alleen de bediening van de telefoon kan de app dan weer losmaken.</p>
+            </details>
+          </section>
+
+          <button id="saveSettingsButton" class="primary-button compact-button" value="default">Bewaar</button>
+        </form>
+      </dialog>
+
+      <div class="ground" aria-hidden="true">
+        <span class="flower flower-one">✿</span>
+        <span class="flower flower-two">✿</span>
+        <span class="flower flower-three">✿</span>
+      </div>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

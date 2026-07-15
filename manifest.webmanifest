@@ -1,0 +1,30 @@
+{
+  "id": "./",
+  "name": "Eden telt mee!",
+  "short_name": "Eden telt",
+  "description": "Een eenvoudig telavontuur voor kleine beginnende tellers.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "portrait",
+  "background_color": "#7dd8ff",
+  "theme_color": "#7dd8ff",
+  "lang": "nl-BE",
+  "categories": ["education", "kids", "games"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
