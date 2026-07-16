@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Eden telt mee!</title>
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=15-auto-update" />
   </head>
   <body>
     <div id="app" class="app-shell">
@@ -24,7 +24,7 @@
         <div class="welcome-copy">
           <p class="eyebrow">Klaar voor een telavontuur?</p>
           <h1 id="welcomeTitle">Eden telt mee!</h1>
-          <p class="welcome-subtitle">Tik · luister · tel</p>
+          <p class="welcome-subtitle">Tik · veeg · sleep · leer</p>
         </div>
 
         <div class="welcome-friends" aria-hidden="true">
@@ -49,7 +49,12 @@
           </div>
         </header>
 
-        <div class="mode-grid">
+        <div class="mode-tabs" role="tablist" aria-label="Soort spelletje">
+          <button class="mode-tab is-active" type="button" role="tab" aria-selected="true" data-category="counting">🔢 Tellen</button>
+          <button class="mode-tab" type="button" role="tab" aria-selected="false" data-category="colors">🎨 Kleuren</button>
+        </div>
+
+        <div id="countingModes" class="mode-grid" data-category-panel="counting">
           <button class="mode-card" type="button" data-mode="count">
             <span class="mode-preview count-preview" aria-hidden="true">
               <img src="assets/grote-smurf.png" alt="" />
@@ -86,6 +91,50 @@
             </span>
             <span class="mode-arrow" aria-hidden="true">›</span>
           </button>
+
+          <button class="mode-card" type="button" data-mode="flashlight">
+            <span class="mode-preview symbol-preview" aria-hidden="true"><span>🔦</span><img src="assets/grote-smurf.png" alt="" /></span>
+            <span class="mode-copy"><strong>Zaklamp</strong><small>Schijn en ontdek</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="brush">
+            <span class="mode-preview symbol-preview" aria-hidden="true"><span>🖌️</span><img src="assets/grote-smurf.png" alt="" /></span>
+            <span class="mode-copy"><strong>Kwast</strong><small>Poets ze tevoorschijn</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="train">
+            <span class="mode-preview emoji-preview" aria-hidden="true">🚂</span>
+            <span class="mode-copy"><strong>Trein</strong><small>Sleep ze in de trein</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="doors">
+            <span class="mode-preview emoji-preview" aria-hidden="true">🚪</span>
+            <span class="mode-copy"><strong>Kiekeboe</strong><small>Veeg de deuren open</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="path">
+            <span class="mode-preview symbol-preview" aria-hidden="true"><span>〰️</span><img src="assets/grote-smurf.png" alt="" /></span>
+            <span class="mode-copy"><strong>Weg volgen</strong><small>Volg het brede pad</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+
+          <button class="mode-card" type="button" data-mode="puzzle">
+            <span class="mode-preview emoji-preview" aria-hidden="true">🧩</span>
+            <span class="mode-copy"><strong>Puzzel</strong><small>Sleep naar de schaduw</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+
+        <div id="colorModes" class="mode-grid" data-category-panel="colors" hidden>
+          <button class="mode-card color-mode-card" type="button" data-mode="color-match">
+            <span class="mode-preview emoji-preview" aria-hidden="true">🍏🎁</span>
+            <span class="mode-copy"><strong>Kleur mengen</strong><small>Geef het juiste voorwerp</small></span>
+            <span class="mode-arrow" aria-hidden="true">›</span>
+          </button>
         </div>
 
         <p id="modeLevelHint" class="mode-level-hint">Makkelijk · tellen tot 5</p>
@@ -100,6 +149,7 @@
 
         <section class="instruction-card">
           <img id="instructionFigure" class="instruction-figure" src="assets/grote-smurf.png" alt="" hidden />
+          <span id="instructionSwatch" class="instruction-swatch" hidden aria-hidden="true"></span>
           <p id="instruction" class="instruction">Tik op de figuren</p>
           <button id="repeatButton" class="repeat-button" type="button" aria-label="Luister nog eens">
             <span aria-hidden="true">🔊</span>
@@ -114,8 +164,9 @@
 
       <section id="celebrationScreen" class="screen celebration-screen" aria-labelledby="celebrationTitle">
         <div id="confetti" class="confetti" aria-hidden="true"></div>
-        <p class="celebration-kicker">Dat zijn er</p>
+        <p id="celebrationKicker" class="celebration-kicker">Dat zijn er</p>
         <div id="celebrationNumber" class="celebration-number">3</div>
+        <div id="celebrationColor" class="celebration-color" hidden aria-hidden="true"></div>
         <p id="celebrationWord" class="celebration-word">drie</p>
         <div id="resultDots" class="result-dots" aria-hidden="true"></div>
         <h2 id="celebrationTitle">Goed geteld!</h2>
@@ -179,6 +230,6 @@
       </div>
     </div>
 
-    <script src="app.js" defer></script>
+    <script src="app.js?v=15-auto-update" defer></script>
   </body>
 </html>

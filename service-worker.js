@@ -1,4 +1,4 @@
-const CACHE_NAME = "eden-telt-v11";
+const CACHE_NAME = "eden-telt-v15-auto-update";
 const APP_FILES = [
   "./",
   "./index.html",

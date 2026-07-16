@@ -1409,3 +1409,1814 @@ h1 {
     scroll-behavior: auto !important;
   }
 }
+
+/* Uitgebreid spellenmenu */
+[hidden] {
+  display: none !important;
+}
+
+.mode-screen {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.mode-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: min(100%, 470px);
+  margin: 12px auto 0;
+  border: 3px solid rgba(255, 255, 255, 0.82);
+  border-radius: 21px;
+  padding: 5px;
+  background: rgba(215, 243, 255, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 0 rgba(7, 95, 174, 0.15);
+}
+
+.mode-tab {
+  min-height: 52px;
+  border: 0;
+  border-radius: 15px;
+  color: var(--blue-dark);
+  background: transparent;
+  font-size: 1.02rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mode-tab.is-active {
+  color: white;
+  background: var(--blue);
+  box-shadow: inset 0 -4px 0 var(--blue-dark);
+}
+
+.mode-grid {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 10px;
+  margin: 13px auto 5px;
+  padding-bottom: 5px;
+}
+
+.mode-grid[hidden] {
+  display: none;
+}
+
+.mode-card {
+  grid-template-columns: 58px minmax(0, 1fr);
+  min-height: 112px;
+  border-width: 3px;
+  border-radius: 22px;
+  padding: 7px 9px;
+}
+
+.mode-preview {
+  min-height: 82px;
+}
+
+.mode-preview img {
+  max-width: 58px;
+}
+
+.mode-copy {
+  gap: 4px;
+}
+
+.mode-copy strong {
+  font-size: clamp(1rem, 4.2vw, 1.22rem);
+  line-height: 1.05;
+}
+
+.mode-copy small {
+  font-size: clamp(0.68rem, 2.8vw, 0.82rem);
+}
+
+.mode-arrow {
+  position: absolute;
+  right: 7px;
+  bottom: 1px;
+  font-size: 1.75rem;
+}
+
+.emoji-preview {
+  align-items: center;
+  font-family: "Segoe UI Emoji", sans-serif;
+  font-size: clamp(2.45rem, 11vw, 3.5rem);
+  line-height: 1;
+}
+
+.symbol-preview > span {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  font-size: 1.7rem;
+}
+
+.symbol-preview img {
+  width: 72%;
+}
+
+.color-mode-card {
+  min-height: 150px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.mode-level-hint {
+  flex: none;
+  margin-bottom: 7px;
+}
+
+.instruction-card.has-swatch {
+  padding-left: 65px;
+}
+
+.instruction-swatch {
+  position: absolute;
+  left: 13px;
+  width: 43px;
+  height: 43px;
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 rgba(21, 54, 90, 0.18);
+}
+
+/* Grote peutergebaren */
+.gesture-scene,
+.drag-figure,
+.path-leader,
+.lift-handle,
+.paint-drop,
+.peek-door {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.character-grid[data-mode="flashlight"],
+.character-grid[data-mode="brush"],
+.character-grid[data-mode="train"],
+.character-grid[data-mode="doors"],
+.character-grid[data-mode="path"],
+.character-grid[data-mode="lift"],
+.character-grid[data-mode="puzzle"],
+.character-grid[data-mode="color-path"],
+.character-grid[data-mode="color-match"] {
+  display: block;
+  height: 100%;
+}
+
+.gesture-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: var(--shadow);
+}
+
+.gesture-scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 3px rgba(21, 54, 90, 0.18));
+}
+
+.gesture-scene .count-badge {
+  top: -5px;
+  right: -5px;
+  width: clamp(34px, 9vw, 45px);
+  height: clamp(34px, 9vw, 45px);
+  border-width: 3px;
+  font-size: clamp(1.05rem, 5vw, 1.45rem);
+  box-shadow: 0 3px 0 var(--blue-dark);
+}
+
+/* Zaklamp */
+.flashlight-scene {
+  background: #102c46;
+}
+
+.flashlight-scene::after {
+  content: "Beweeg het licht";
+  position: absolute;
+  left: 50%;
+  bottom: 9px;
+  z-index: 4;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  padding: 6px 13px;
+  color: white;
+  background: rgba(5, 22, 37, 0.7);
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+.flashlight-halo {
+  position: absolute;
+  z-index: 1;
+  width: 185px;
+  height: 185px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0.55;
+  background: radial-gradient(circle, rgba(255, 250, 190, 0.95) 0 25%, rgba(255, 245, 160, 0.4) 52%, transparent 72%);
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.flashlight-scene:not(.is-shining) .flashlight-halo {
+  opacity: 0.25;
+}
+
+.discovery-grid,
+.brush-scene {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(105px, 1fr);
+  place-items: stretch;
+  gap: 10px;
+  height: 100%;
+  padding: 13px;
+}
+
+.character-grid[data-count="6"] .discovery-grid,
+.character-grid[data-count="7"] .discovery-grid,
+.character-grid[data-count="8"] .discovery-grid,
+.character-grid[data-count="9"] .discovery-grid,
+.character-grid[data-count="10"] .discovery-grid,
+.character-grid[data-count="6"].character-grid .brush-scene,
+.character-grid[data-count="7"].character-grid .brush-scene,
+.character-grid[data-count="8"].character-grid .brush-scene,
+.character-grid[data-count="9"].character-grid .brush-scene,
+.character-grid[data-count="10"].character-grid .brush-scene {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  padding: 9px;
+}
+
+.flash-figure,
+.brush-figure {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: 3px solid rgba(255, 255, 255, 0.88);
+  border-radius: 22px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.flash-figure {
+  z-index: 2;
+  opacity: 0.13;
+  filter: saturate(0.25);
+  transition: opacity 320ms ease, filter 320ms ease, transform 320ms ease;
+}
+
+.flash-figure.is-found {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.03);
+  background: #fff9c9;
+}
+
+/* Toverkwast */
+.brush-scene {
+  background: linear-gradient(145deg, rgba(232, 247, 253, 0.95), rgba(255, 255, 255, 0.72));
+}
+
+.brush-figure {
+  overflow: hidden;
+  background: white;
+}
+
+.brush-cover {
+  position: absolute;
+  inset: -5px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  color: #e8f5fa;
+  background:
+    radial-gradient(circle at 26% 35%, #f8fdff 0 25%, transparent 27%),
+    radial-gradient(circle at 70% 57%, #dceef5 0 29%, transparent 31%),
+    linear-gradient(140deg, #eef9fc, #cfe5ee);
+  font-size: clamp(3rem, 18vw, 5.5rem);
+  opacity: var(--cover-opacity, 1);
+  pointer-events: none;
+  transition: opacity 140ms linear;
+}
+
+.brush-figure.is-clean .brush-cover {
+  opacity: 0;
+}
+
+.brush-figure.is-clean {
+  border-color: var(--yellow);
+  background: #fff9c9;
+}
+
+/* Trein */
+.train-scene {
+  display: grid;
+  grid-template-rows: minmax(160px, 1.08fr) minmax(135px, 0.92fr);
+  gap: 10px;
+  padding: 11px;
+  overflow: visible;
+  background: linear-gradient(#dff5ff 0 63%, #a7d879 63%);
+}
+
+.train-drop-zone {
+  position: relative;
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  align-items: center;
+  border: 4px dashed rgba(22, 142, 234, 0.56);
+  border-radius: 23px;
+  padding: 7px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.train-engine {
+  align-self: end;
+  padding-bottom: 11px;
+  font-size: clamp(3.3rem, 15vw, 4.8rem);
+}
+
+.wagon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-content: center;
+  gap: 7px 4px;
+}
+
+.character-grid[data-count="1"] .wagon-grid,
+.character-grid[data-count="1"] .train-platform {
+  grid-template-columns: minmax(88px, 125px);
+  justify-content: center;
+}
+
+.character-grid[data-count="2"] .wagon-grid,
+.character-grid[data-count="2"] .train-platform {
+  grid-template-columns: repeat(2, minmax(70px, 105px));
+  justify-content: center;
+}
+
+.character-grid[data-count="3"] .wagon-grid,
+.character-grid[data-count="3"] .train-platform {
+  grid-template-columns: repeat(3, minmax(58px, 90px));
+  justify-content: center;
+}
+
+.character-grid[data-count="4"] .wagon-grid,
+.character-grid[data-count="4"] .train-platform,
+.character-grid[data-count="5"] .wagon-grid,
+.character-grid[data-count="5"] .train-platform {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.train-wagon {
+  position: relative;
+  height: clamp(56px, 13vh, 82px);
+  border: 4px solid #b84f64;
+  border-radius: 12px 12px 18px 18px;
+  background: #f37996;
+  box-shadow: inset 0 -8px 0 #c95470;
+}
+
+.train-wagon::before,
+.train-wagon::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 17px;
+  height: 17px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: #315d7d;
+}
+
+.train-wagon::before { left: 7px; }
+.train-wagon::after { right: 7px; }
+
+.wagon-window {
+  position: absolute;
+  inset: 4px 7px 13px;
+  display: grid;
+  place-items: end center;
+  overflow: hidden;
+  border: 3px solid white;
+  border-radius: 9px;
+  background: #dff5ff;
+}
+
+.wagon-window img {
+  width: 90%;
+  height: 100%;
+}
+
+.train-platform {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 5px;
+  border: 3px solid rgba(255, 255, 255, 0.88);
+  border-radius: 22px;
+  padding: 7px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.drag-figure {
+  position: relative;
+  width: clamp(48px, 13vw, 66px);
+  height: clamp(65px, 17vh, 92px);
+  border: 3px solid white;
+  border-radius: 18px;
+  padding: 3px;
+  background: #fff9c9;
+  box-shadow: 0 5px 0 rgba(7, 95, 174, 0.2);
+  cursor: grab;
+  transition: transform 220ms ease, opacity 160ms ease;
+}
+
+.character-grid[data-count="1"] .train-token,
+.character-grid[data-count="2"] .train-token,
+.character-grid[data-count="3"] .train-token {
+  width: clamp(70px, 20vw, 88px);
+  height: clamp(92px, 23vh, 118px);
+}
+
+.drag-figure.is-dragging {
+  cursor: grabbing;
+  transition: none;
+  filter: drop-shadow(0 15px 12px rgba(21, 54, 90, 0.3));
+}
+
+.drag-figure.is-returning {
+  animation: drag-return 280ms ease;
+}
+
+@keyframes drag-return {
+  45% { transform: scale(0.9) rotate(-4deg); }
+}
+
+.train-is-leaving .train-drop-zone {
+  animation: train-leave 900ms 120ms ease-in forwards;
+}
+
+@keyframes train-leave {
+  to { transform: translateX(120%); }
+}
+
+/* Kiekeboe */
+.door-scene {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(118px, 1fr);
+  place-items: stretch;
+  gap: 10px;
+  padding: 12px;
+  background: linear-gradient(#e8f8ff, #fff1d6);
+}
+
+.character-grid[data-count="6"] .door-scene,
+.character-grid[data-count="7"] .door-scene,
+.character-grid[data-count="8"] .door-scene,
+.character-grid[data-count="9"] .door-scene,
+.character-grid[data-count="10"] .door-scene {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  padding: 8px;
+}
+
+.peek-door {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 4px solid white;
+  border-radius: 20px 20px 8px 8px;
+  background: #bde6f6;
+}
+
+.peek-door > img {
+  position: absolute;
+  inset: 7px;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+}
+
+.door-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 5px solid #8b4b2d;
+  border-radius: 16px 16px 5px 5px;
+  background: linear-gradient(90deg, #b96c3f, #d98a52 50%, #af6038 51%);
+  box-shadow: inset 0 0 0 5px rgba(255, 223, 166, 0.2);
+  transition: transform 320ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.door-window {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  display: grid;
+  width: 48%;
+  height: 29%;
+  place-items: center;
+  transform: translateX(-50%);
+  border: 4px solid #fff0c7;
+  border-radius: 10px;
+  color: var(--yellow);
+  background: #74cbee;
+  font-size: 1.4rem;
+}
+
+.door-knob {
+  position: absolute;
+  right: 13%;
+  top: 55%;
+  width: 16px;
+  height: 16px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.door-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.peek-door.is-open .door-panel {
+  transform: translateY(-105%) !important;
+}
+
+/* Smurfenweg */
+.path-scene,
+.color-path-scene {
+  background: linear-gradient(145deg, #dff5ff, #bfe2a0);
+}
+
+.path-line,
+.color-path-line {
+  position: absolute;
+  inset: 5%;
+  width: 90%;
+  height: 90%;
+  overflow: visible;
+}
+
+.path-line polyline,
+.color-path-line polyline {
+  fill: none;
+  stroke: white;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 5px 0 rgba(54, 135, 65, 0.28));
+}
+
+.path-checkpoint,
+.color-stone {
+  position: absolute;
+  z-index: 2;
+  width: clamp(54px, 15vw, 74px);
+  height: clamp(54px, 15vw, 74px);
+  transform: translate(-50%, -50%);
+  border: 5px dashed var(--blue);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 0 rgba(7, 95, 174, 0.2);
+}
+
+.path-checkpoint > img {
+  opacity: 0;
+  transform: scale(0.35);
+  transition: 280ms cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+
+.path-checkpoint.is-joined > img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.path-leader {
+  position: absolute;
+  z-index: 8;
+  width: clamp(68px, 19vw, 92px);
+  height: clamp(88px, 23vw, 120px);
+  transform: translate(-50%, -50%);
+  border: 5px solid white;
+  border-radius: 25px;
+  padding: 4px;
+  background: #fff8c6;
+  box-shadow: 0 8px 0 rgba(7, 95, 174, 0.24);
+}
+
+.path-leader.is-dragging {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 12px 20px rgba(21, 54, 90, 0.25);
+}
+
+/* Lift */
+.lift-scene {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 88px;
+  gap: 12px;
+  padding: 12px;
+  background: linear-gradient(#e7f7ff, #d4eaf4);
+}
+
+.lift-building {
+  position: relative;
+  overflow: hidden;
+  border: 6px solid #6b8da1;
+  border-radius: 25px;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 17%, rgba(255, 255, 255, 0.9) 17% 18%),
+    linear-gradient(90deg, #bcd5df 0 14%, #eef8fb 14% 86%, #bcd5df 86%);
+}
+
+.lift-cable {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 7px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: #557386;
+}
+
+.lift-cabin {
+  position: absolute;
+  left: 8%;
+  bottom: 10px;
+  z-index: 2;
+  width: 84%;
+  height: clamp(92px, 22vh, 145px);
+  border: 6px solid #e6a921;
+  border-radius: 20px 20px 8px 8px;
+  background: #ffd95a;
+  box-shadow: inset 0 -10px 0 #d9a72d;
+  transition: transform 80ms linear;
+}
+
+.lift-passengers {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+}
+
+.lift-passenger {
+  position: relative;
+  min-width: 0;
+  height: 54px;
+}
+
+.lift-passenger .count-badge {
+  width: 25px;
+  height: 25px;
+  font-size: 0.8rem;
+}
+
+.lift-floor-dots {
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  bottom: 10px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+.lift-floor-dots span {
+  width: 15px;
+  height: 15px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: #8aa6b5;
+}
+
+.lift-floor-dots span.is-reached {
+  background: var(--yellow);
+}
+
+.lift-control {
+  position: relative;
+  border: 4px solid white;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.lift-track {
+  position: absolute;
+  top: 28px;
+  bottom: 28px;
+  left: 50%;
+  width: 14px;
+  transform: translateX(-50%);
+  border: 4px solid white;
+  border-radius: 999px;
+  background: var(--blue);
+  box-shadow: inset 0 0 0 3px var(--blue-dark);
+}
+
+.lift-handle {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  z-index: 4;
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  transform: translateX(-50%);
+  border: 5px solid white;
+  border-radius: 50%;
+  color: white;
+  background: var(--pink);
+  box-shadow: 0 6px 0 #c84971;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.lift-handle.is-dragging {
+  transform: translateX(-50%) scale(1.08);
+}
+
+/* Puzzel */
+.puzzle-scene {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 130px;
+  gap: 10px;
+  padding: 11px;
+  background: linear-gradient(145deg, #eefaff, #fff5d3);
+}
+
+.puzzle-slots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(92px, 1fr);
+  gap: 8px;
+}
+
+.character-grid[data-count="6"] .puzzle-slots,
+.character-grid[data-count="7"] .puzzle-slots,
+.character-grid[data-count="8"] .puzzle-slots,
+.character-grid[data-count="9"] .puzzle-slots,
+.character-grid[data-count="10"] .puzzle-slots {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.puzzle-slot {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: 4px dashed #91b4c3;
+  border-radius: 22px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.puzzle-slot.is-current {
+  border-color: var(--yellow);
+  background: #fff9c9;
+  animation: puzzle-glow 900ms ease-in-out infinite alternate;
+}
+
+.puzzle-shadow {
+  opacity: 0.2;
+  filter: grayscale(1) brightness(0.55) !important;
+}
+
+.puzzle-slot.is-counted {
+  border-style: solid;
+  border-color: var(--blue);
+  background: white;
+}
+
+.puzzle-tray {
+  display: grid;
+  place-items: center;
+  border: 4px solid white;
+  border-radius: 22px;
+  background: rgba(117, 213, 255, 0.48);
+}
+
+.puzzle-piece {
+  width: 82px;
+  height: 112px;
+}
+
+@keyframes puzzle-glow {
+  to { box-shadow: 0 0 0 7px rgba(255, 216, 79, 0.35); }
+}
+
+/* Kleuren leren */
+.color-path-scene {
+  --target-color: #ef5350;
+  --target-soft: #ffd8d6;
+  background: linear-gradient(145deg, var(--target-soft), white 68%);
+}
+
+.color-path-line polyline {
+  stroke: var(--target-soft);
+  stroke-width: 15;
+  filter: drop-shadow(0 5px 0 color-mix(in srgb, var(--target-color) 40%, transparent));
+}
+
+.color-stone {
+  border-color: white;
+  background: var(--target-soft);
+  box-shadow: inset 0 0 0 6px white, 0 6px 0 color-mix(in srgb, var(--target-color) 52%, #7b6b32);
+}
+
+.color-stone::after {
+  content: "";
+  position: absolute;
+  inset: 17%;
+  border-radius: 50%;
+  background: var(--target-color);
+  opacity: 0.3;
+}
+
+.color-stone.is-visited {
+  transform: translate(-50%, -50%) scale(1.14);
+  background: var(--target-color);
+  animation: color-pop 380ms cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+
+.color-stone.is-visited::after {
+  opacity: 1;
+  background: white;
+}
+
+@keyframes color-pop {
+  50% { transform: translate(-50%, -50%) scale(1.28); }
+}
+
+.color-match-scene {
+  display: grid;
+  grid-template-rows: minmax(170px, 1fr) minmax(120px, 0.75fr);
+  gap: 14px;
+  padding: 14px;
+  background: linear-gradient(145deg, #e9f8ff, #fff4d4);
+}
+
+.paint-target {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 5px solid white;
+  border-radius: 28px;
+  background: var(--target-soft, white);
+  box-shadow: 0 7px 0 rgba(7, 95, 174, 0.17);
+}
+
+.paint-target > img {
+  position: relative;
+  z-index: 2;
+  width: 54%;
+  height: 92%;
+}
+
+.paint-target-ring {
+  position: absolute;
+  z-index: 1;
+  width: min(58%, 190px);
+  aspect-ratio: 1;
+  border: 10px dashed;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.82;
+}
+
+.paint-target.is-painted {
+  background: var(--paint-color);
+  animation: painted-pop 520ms cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+
+.paint-target.needs-target {
+  animation: soft-shake 440ms ease;
+}
+
+@keyframes painted-pop {
+  50% { transform: scale(1.04); }
+}
+
+.paint-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 9px;
+  border: 4px solid white;
+  border-radius: 24px;
+  padding: 9px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.paint-drop {
+  position: relative;
+  width: clamp(64px, 18vw, 88px);
+  height: clamp(74px, 20vw, 98px);
+  transform: rotate(45deg);
+  border: 6px solid white;
+  border-radius: 55% 50% 55% 16%;
+  background: var(--drop-color);
+  box-shadow: 6px 7px 0 rgba(21, 54, 90, 0.18);
+  cursor: grab;
+}
+
+.paint-drop.is-dragging {
+  transform: translate(var(--drag-x, 0), var(--drag-y, 0)) rotate(45deg) scale(1.08);
+}
+
+.paint-shine {
+  position: absolute;
+  top: 16%;
+  left: 20%;
+  width: 18px;
+  height: 28px;
+  transform: rotate(-20deg);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.live-number.is-color {
+  width: 155px;
+  height: 100px;
+  border-radius: 28px;
+  background: var(--live-color);
+  box-shadow: 0 8px 0 rgba(21, 54, 90, 0.22), 0 15px 25px rgba(94, 25, 52, 0.2);
+  font-size: 1.7rem;
+  text-shadow: 0 3px 0 rgba(21, 54, 90, 0.25);
+}
+
+.celebration-color {
+  display: grid;
+  width: clamp(120px, 38vw, 162px);
+  height: clamp(120px, 38vw, 162px);
+  place-items: center;
+  margin: 5px 0 8px;
+  border: 8px solid white;
+  border-radius: 50%;
+  animation: celebration-bounce 1.2s ease-in-out infinite;
+}
+
+.celebration-screen[data-result="color"] .celebration-word {
+  margin-top: 10px;
+  font-size: clamp(2rem, 10vw, 3rem);
+}
+
+.celebration-screen[data-result="color"] .celebration-friends {
+  width: min(62%, 230px);
+  max-height: 190px;
+  border: 5px solid white;
+  border-radius: 50%;
+  padding: 9px;
+  background: var(--result-color, white);
+}
+
+@media (max-width: 374px) {
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-card {
+    min-height: 94px;
+  }
+
+  .mode-preview {
+    min-height: 70px;
+  }
+}
+
+@media (max-height: 700px) {
+  .mode-header h2 {
+    font-size: 1.55rem;
+  }
+
+  .mode-tabs {
+    margin-top: 7px;
+  }
+
+  .mode-tab {
+    min-height: 45px;
+  }
+
+  .mode-card {
+    min-height: 100px;
+  }
+
+  .gesture-scene {
+    border-radius: 22px;
+  }
+
+  .puzzle-scene {
+    grid-template-rows: minmax(0, 1fr) 105px;
+  }
+}
+
+/* Feedbackronde: vrije velden, echt slepen en concrete kleurvoorwerpen */
+.character-grid[data-mode="flashlight"],
+.character-grid[data-mode="brush"],
+.character-grid[data-mode="train"],
+.character-grid[data-mode="doors"],
+.character-grid[data-mode="path"],
+.character-grid[data-mode="puzzle"],
+.character-grid[data-mode="color-match"] {
+  display: block;
+  height: 100%;
+}
+
+/* Zaklamp: één volledig zwarte kamer, zonder kaartjes */
+.flashlight-scene {
+  border-color: #17212a;
+  background: #000;
+}
+
+.flashlight-scene::after {
+  content: "Veeg met het licht";
+  bottom: 7px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.flashlight-halo {
+  z-index: 3;
+  width: 132px;
+  height: 132px;
+  opacity: 0.92;
+  background: radial-gradient(circle, rgba(255, 252, 205, 0.98) 0 26%, rgba(255, 247, 174, 0.45) 48%, transparent 72%);
+  mix-blend-mode: screen;
+}
+
+.flashlight-scene:not(.is-shining) .flashlight-halo {
+  opacity: 0;
+}
+
+.flash-figure {
+  position: absolute;
+  z-index: 4;
+  width: clamp(42px, 12vw, 55px);
+  height: clamp(58px, 16vw, 76px);
+  min-width: 0;
+  min-height: 0;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  opacity: 0;
+  background: transparent;
+  filter: none;
+  pointer-events: none;
+}
+
+.flash-figure.is-found {
+  background: transparent;
+  animation: found-to-bag 680ms ease-in forwards;
+}
+
+.flash-figure .count-badge {
+  width: 29px;
+  height: 29px;
+  font-size: 1rem;
+}
+
+@keyframes found-to-bag {
+  0%, 34% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--bag-x)), calc(-50% + var(--bag-y))) scale(0.12) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+.gargamel-collector {
+  position: absolute;
+  right: 5px;
+  bottom: 25px;
+  z-index: 6;
+  width: 92px;
+  height: 112px;
+  pointer-events: none;
+}
+
+.gargamel-collector > img {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  width: 65px;
+  height: 88px;
+  filter: drop-shadow(0 4px 3px rgba(255, 255, 255, 0.18));
+}
+
+.collection-bag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: grid;
+  width: 58px;
+  height: 54px;
+  place-items: center;
+  border: 4px solid #70401f;
+  border-radius: 45% 45% 34% 34%;
+  color: white;
+  background: #a76534;
+  box-shadow: inset 0 7px 0 #c58a56, 0 4px 0 rgba(0, 0, 0, 0.35);
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.collection-bag::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  width: 42px;
+  border-top: 7px solid #70401f;
+  border-radius: 50%;
+}
+
+.collection-bag.bag-pop { animation: bag-pop 300ms ease; }
+@keyframes bag-pop { 50% { transform: scale(1.18) rotate(-4deg); } }
+
+/* Kwast: één doorlopend veld met verspreide figuren */
+.brush-scene {
+  display: block;
+  padding: 0;
+  background: linear-gradient(145deg, #d8f2fb, #fff6cf);
+}
+
+.brush-figure {
+  position: absolute;
+  width: clamp(54px, 16vw, 72px);
+  height: clamp(75px, 21vw, 98px);
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.brush-cover {
+  inset: -12px -16px;
+  border-radius: 46% 54% 42% 58%;
+  background:
+    radial-gradient(circle at 25% 33%, #ffffff 0 28%, transparent 30%),
+    radial-gradient(circle at 70% 30%, #edf7fa 0 31%, transparent 33%),
+    radial-gradient(circle at 48% 68%, #d8eaf1 0 38%, transparent 40%);
+  box-shadow: none;
+}
+
+.brush-figure.is-clean {
+  border: 0;
+  background: transparent;
+  animation: clean-pop 360ms cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes clean-pop {
+  50% { transform: translate(-50%, -50%) scale(1.16); }
+}
+
+.character-grid[data-count="6"] .brush-figure,
+.character-grid[data-count="7"] .brush-figure,
+.character-grid[data-count="8"] .brush-figure,
+.character-grid[data-count="9"] .brush-figure,
+.character-grid[data-count="10"] .brush-figure {
+  width: 48px;
+  height: 67px;
+}
+
+/* De locomotief kijkt naar links en rijdt dus ook naar links weg. */
+@keyframes train-leave {
+  to { transform: translateX(-130%); }
+}
+
+/* Een deur volgt de echte veeg en vliegt in diezelfde richting open. */
+.peek-door.is-open .door-panel {
+  transform: translate(var(--door-open-x, 0), var(--door-open-y, -130%)) !important;
+}
+
+.character-grid[data-count="1"] .door-scene {
+  grid-template-columns: minmax(175px, 225px);
+  grid-auto-rows: minmax(280px, 390px);
+  place-content: center;
+}
+
+.door-arrow {
+  transform: translateX(-50%) rotate(-28deg);
+}
+
+/* Het hele pad blijft zichtbaar en eindigt aan Grote Smurfs huis. */
+.path-scene {
+  background: linear-gradient(#cceeff 0 56%, #a9dc83 56%);
+}
+
+.path-line {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.path-line polyline {
+  stroke: #f6d79b;
+  stroke-width: 13;
+  filter: drop-shadow(0 5px 0 rgba(104, 82, 42, 0.25));
+}
+
+.path-checkpoint {
+  width: clamp(43px, 12vw, 57px);
+  height: clamp(43px, 12vw, 57px);
+  border: 3px dashed rgba(22, 142, 234, 0.7);
+  background: rgba(255,255,255,.82);
+}
+
+.path-checkpoint > img {
+  opacity: .8;
+  transform: scale(.9);
+  filter: grayscale(.35);
+}
+
+.path-checkpoint.is-joined > img {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+}
+
+.path-start {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, 38px) rotate(-5deg);
+  border: 3px solid white;
+  border-radius: 8px;
+  padding: 3px 6px;
+  color: white;
+  background: #168eea;
+  font: 900 .58rem/1 system-ui, sans-serif;
+}
+
+.mushroom-house {
+  position: absolute;
+  z-index: 5;
+  width: 76px;
+  height: 86px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.mushroom-cap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 78px;
+  height: 46px;
+  transform: translateX(-50%);
+  border: 4px solid white;
+  border-radius: 50% 50% 38% 38%;
+  background: #ef5350;
+  box-shadow: 0 5px 0 rgba(132,42,42,.24);
+}
+
+.mushroom-cap i {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+}
+.mushroom-cap i:nth-child(1) { left: 14px; top: 14px; }
+.mushroom-cap i:nth-child(2) { left: 36px; top: 6px; width: 15px; height: 15px; }
+.mushroom-cap i:nth-child(3) { right: 8px; top: 22px; width: 10px; height: 10px; }
+
+.mushroom-stem {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 48px;
+  height: 53px;
+  transform: translateX(-50%);
+  border: 4px solid white;
+  border-radius: 15px 15px 9px 9px;
+  background: #fff1cf;
+}
+
+.mushroom-stem i {
+  position: absolute;
+  right: 8px;
+  bottom: 0;
+  width: 18px;
+  height: 29px;
+  border-radius: 10px 10px 0 0;
+  background: #815134;
+}
+
+.mushroom-house.is-home { animation: home-bounce 500ms ease; }
+@keyframes home-bounce { 50% { transform: translate(-50%, -50%) scale(1.14); } }
+
+.character-grid[data-count="8"] .path-checkpoint,
+.character-grid[data-count="9"] .path-checkpoint,
+.character-grid[data-count="10"] .path-checkpoint {
+  width: 39px;
+  height: 39px;
+}
+
+/* Concrete voorwerpen voor het kleurspel */
+.color-match-scene {
+  grid-template-rows: minmax(190px, 1fr) minmax(118px, .62fr);
+}
+
+.paint-target {
+  overflow: visible;
+}
+
+.paint-target > img {
+  width: 58%;
+  height: 96%;
+}
+
+.paint-target-ring {
+  right: 8%;
+  bottom: 9%;
+  display: grid;
+  width: 82px;
+  height: 82px;
+  place-items: center;
+  border-width: 7px;
+  color: rgba(21,54,90,.35);
+  font: 900 2rem/1 system-ui, sans-serif;
+}
+
+.paint-target.is-painted {
+  background: var(--target-soft, white);
+}
+
+.paint-options {
+  gap: 3px;
+  padding: 7px;
+}
+
+.color-object {
+  position: relative;
+  display: grid;
+  flex: 0 1 86px;
+  width: clamp(66px, 19vw, 86px);
+  height: clamp(76px, 21vw, 96px);
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  transition: transform 220ms ease;
+}
+
+.color-object.is-dragging {
+  transition: none;
+  filter: drop-shadow(0 14px 10px rgba(21,54,90,.28));
+}
+
+.object-shape {
+  position: relative;
+  display: block;
+  width: 66px;
+  height: 62px;
+  border: 5px solid white;
+  background: var(--object-color);
+  box-shadow: 0 6px 0 rgba(21,54,90,.18);
+}
+
+.color-object--apple .object-shape {
+  width: 62px;
+  height: 58px;
+  border-radius: 45% 45% 48% 48%;
+}
+.color-object--apple .object-shape::before {
+  content: "";
+  position: absolute;
+  left: 29px;
+  top: -19px;
+  width: 7px;
+  height: 19px;
+  border-radius: 5px;
+  background: #754321;
+}
+.color-object--apple .object-shape::after {
+  content: "";
+  position: absolute;
+  left: 34px;
+  top: -17px;
+  width: 22px;
+  height: 12px;
+  transform: rotate(-20deg);
+  border-radius: 80% 20% 80% 20%;
+  background: #4b9e48;
+}
+
+.color-object--gift .object-shape { border-radius: 8px; }
+.color-object--gift .object-shape i,
+.color-object--gift .object-shape b {
+  position: absolute;
+  display: block;
+  background: #fff4a9;
+}
+.color-object--gift .object-shape i { left: 25px; top: 0; width: 10px; height: 100%; }
+.color-object--gift .object-shape b { left: 0; top: 21px; width: 100%; height: 10px; }
+.color-object--gift .object-shape::before,
+.color-object--gift .object-shape::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  width: 27px;
+  height: 20px;
+  border: 7px solid #fff4a9;
+  border-radius: 50%;
+}
+.color-object--gift .object-shape::before { left: 5px; transform: rotate(18deg); }
+.color-object--gift .object-shape::after { right: 5px; transform: rotate(-18deg); }
+
+.color-object--ball .object-shape {
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.color-object--ball .object-shape::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 23px;
+  width: 80px;
+  height: 12px;
+  transform: rotate(-25deg);
+  background: rgba(255,255,255,.75);
+}
+
+.color-object--hat .object-shape {
+  width: 70px;
+  height: 64px;
+  border: 0;
+  clip-path: polygon(50% 0, 83% 72%, 100% 74%, 100% 92%, 0 92%, 0 74%, 17% 72%);
+}
+.color-object--hat .object-shape::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  bottom: 16px;
+  width: 46px;
+  height: 9px;
+  background: white;
+}
+
+.color-object--fish .object-shape {
+  width: 60px;
+  height: 45px;
+  border-radius: 55% 48% 48% 55%;
+}
+.color-object--fish .object-shape::before {
+  content: "";
+  position: absolute;
+  right: -24px;
+  top: 4px;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-right: 0;
+  border-left: 25px solid var(--object-color);
+}
+.color-object--fish .object-shape::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #173750;
+}
+
+.color-object--book .object-shape {
+  width: 62px;
+  height: 68px;
+  border-radius: 5px 10px 10px 5px;
+}
+.color-object--book .object-shape::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  width: 7px;
+  height: 100%;
+  background: rgba(255,255,255,.75);
+}
+
+.received-object {
+  position: absolute;
+  right: 4%;
+  bottom: 5%;
+  z-index: 5;
+  transform: scale(.9) rotate(-7deg);
+  pointer-events: none;
+}
+
+.result-color-object {
+  position: absolute;
+  right: -35px;
+  bottom: -14px;
+  z-index: 4;
+  transform: scale(.62) rotate(7deg);
+  pointer-events: none;
+}
+
+/* Verduidelijking: één figuur per ronde en elk gebaar echt uitvoeren */
+.character-grid[data-mode="gift"] {
+  display: block;
+  height: 100%;
+}
+
+/* Cadeautjes moeten vanuit de mand naar de figuren worden gesleept. */
+.gift-drag-scene {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(118px, .34fr);
+  gap: 10px;
+  padding: 10px;
+  background: linear-gradient(145deg, #e7f7ff, #fff0c9);
+}
+
+.gift-recipients {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(105px, 1fr);
+  gap: 8px;
+}
+
+.gift-recipient {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  pointer-events: none;
+}
+
+.gift-recipient.has-gift {
+  border-color: var(--yellow);
+  background: #fff8c9;
+}
+
+.gift-on-recipient {
+  position: absolute;
+  right: 2px;
+  bottom: 0;
+  z-index: 4;
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  filter: drop-shadow(0 3px 2px rgba(21,54,90,.22));
+  animation: gift-arrives 380ms cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes gift-arrives {
+  50% { transform: scale(1.35) rotate(8deg); }
+}
+
+.gift-tray {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(48px, 68px));
+  grid-auto-rows: minmax(49px, 62px);
+  place-content: center;
+  place-items: center;
+  gap: 5px;
+  border: 4px solid white;
+  border-radius: 22px;
+  background: rgba(255,255,255,.75);
+}
+
+.drag-gift {
+  position: relative;
+  display: grid;
+  width: clamp(48px, 14vw, 62px);
+  height: clamp(48px, 14vw, 62px);
+  place-items: center;
+  border: 4px solid white;
+  border-radius: 17px;
+  padding: 0;
+  background: var(--pink);
+  box-shadow: 0 5px 0 #c84971;
+  font-size: clamp(1.65rem, 8vw, 2.25rem);
+  cursor: grab;
+  touch-action: none;
+  transition: transform 220ms ease;
+}
+
+.drag-gift.is-dragging {
+  transition: none;
+  filter: drop-shadow(0 13px 9px rgba(21,54,90,.3));
+}
+
+.drag-gift.is-returning { animation: drag-return 280ms ease; }
+
+.character-grid[data-count="1"] .gift-recipients {
+  grid-template-columns: minmax(150px, 205px);
+  grid-auto-rows: minmax(230px, 330px);
+  place-content: center;
+}
+
+.character-grid[data-count="6"] .gift-recipients,
+.character-grid[data-count="7"] .gift-recipients,
+.character-grid[data-count="8"] .gift-recipients,
+.character-grid[data-count="9"] .gift-recipients,
+.character-grid[data-count="10"] .gift-recipients {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+/* Een figuur blijft zichtbaar zolang het licht erop rust; de balk vult in twee seconden. */
+.flash-figure.is-lit {
+  opacity: 1;
+}
+
+.flash-figure.is-lit > img {
+  clip-path: circle(66px at var(--light-local-x, 50%) var(--light-local-y, 50%));
+}
+
+.light-timer {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: -10px;
+  z-index: 5;
+  height: 8px;
+  overflow: hidden;
+  border: 2px solid white;
+  border-radius: 999px;
+  opacity: 0;
+  background: rgba(0,0,0,.65);
+  box-shadow: 0 2px 0 rgba(0,0,0,.45);
+}
+
+.light-timer::after {
+  content: "";
+  display: block;
+  width: calc(var(--light-progress, 0) * 100%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffe26a, #7cf38b);
+}
+
+.flash-figure.is-lit .light-timer { opacity: 1; }
+.flash-figure.is-found .light-timer { display: none; }
+
+/* De kwast is nu één echt vuil raam: het canvasstof wordt plaatselijk weggeveegd. */
+.brush-scene {
+  isolation: isolate;
+  background: linear-gradient(145deg, #dff5ff, #b8e2f4 56%, #d6edbd 56%);
+}
+
+.brush-scene::before,
+.brush-scene::after {
+  content: "";
+  position: absolute;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.brush-scene::before {
+  inset: 0;
+  border: 9px solid rgba(89,63,39,.68);
+  border-radius: 23px;
+  box-shadow: inset 0 0 0 4px rgba(255,255,255,.3);
+}
+
+.brush-scene::after {
+  top: 12px;
+  left: 14px;
+  width: 42%;
+  height: 5px;
+  transform: rotate(-3deg);
+  border-radius: 50%;
+  background: rgba(255,255,255,.45);
+}
+
+.brush-figure {
+  z-index: 2;
+}
+
+.dust-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.brush-figure.is-clean {
+  z-index: 4;
+}
+
+/* De deur volgt vertraagd en opent pas na een volledige, losgelaten veeg. */
+.door-panel {
+  transition: transform 190ms linear;
+}
+
+.peek-door.is-open .door-panel {
+  transform: translate(var(--door-open-x, 0), var(--door-open-y, -145%)) !important;
+  transition-duration: 560ms;
+  transition-timing-function: cubic-bezier(.18,.75,.25,1);
+}
+
+/* Genummerde stappen blijven zichtbaar; onderweg staan geen extra figuren. */
+.path-step:not(.mushroom-house) {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  width: clamp(48px, 13vw, 60px);
+  height: clamp(48px, 13vw, 60px);
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 5px solid white;
+  border-radius: 50%;
+  background: #bfe7f7;
+  box-shadow: 0 5px 0 rgba(39,100,131,.25);
+}
+
+.path-step:not(.mushroom-house).is-visited {
+  border-color: #fff7b2;
+  background: #71cf67;
+  animation: step-pop 330ms cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes step-pop {
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.path-step-number {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  z-index: 7;
+  display: grid;
+  width: 38px !important;
+  height: 38px !important;
+  place-items: center;
+  transform: translate(-50%, -50%) !important;
+  border: 3px solid white !important;
+  border-radius: 50%;
+  color: white;
+  background: var(--blue);
+  box-shadow: 0 3px 0 var(--blue-dark) !important;
+  font-size: 1.25rem !important;
+  font-weight: 900;
+  opacity: 1 !important;
+}
+
+.mushroom-house .path-step-number {
+  top: -5px !important;
+  left: auto !important;
+  right: -10px !important;
+  transform: none !important;
+}
+
+.character-grid[data-count="8"] .path-step:not(.mushroom-house),
+.character-grid[data-count="9"] .path-step:not(.mushroom-house),
+.character-grid[data-count="10"] .path-step:not(.mushroom-house) {
+  width: 42px;
+  height: 42px;
+}
+
+.character-grid[data-count="8"] .path-step-number,
+.character-grid[data-count="9"] .path-step-number,
+.character-grid[data-count="10"] .path-step-number {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 1.02rem !important;
+}
